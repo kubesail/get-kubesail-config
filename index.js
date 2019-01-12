@@ -1,20 +1,19 @@
-const yaml = require('js-yaml')
 const path = require('path')
 const homedir = require('os').homedir()
 const fs = require('fs')
-const ansiStyles = require('ansi-styles')
-const errArrows = `${ansiStyles.red.open}>>${ansiStyles.red.close}`
-
-const opn = require('opn')
-
 const http = require('http')
+
+const ansiStyles = require('ansi-styles')
+const yaml = require('js-yaml')
+const opn = require('opn')
 const getPort = require('get-port')
 
+const ERR_ARROWS = `${ansiStyles.red.open}>>${ansiStyles.red.close}`
 const KUBESAIL_WWW_HOST = 'https://localhost:3000'
 const KUBE_CONFIG_PATH = path.join(homedir, '.kube', 'config')
 
 function fatal(message /*: string */) {
-  process.stderr.write(`${errArrows} ${message}\n`)
+  process.stderr.write(`${ERR_ARROWS} ${message}\n`)
   process.exit(1)
 }
 
@@ -65,7 +64,6 @@ async function connectKubeSail() {
   const port = await getPort()
   const server = http
     .createServer(function(req, res) {
-      console.log(req.url)
       let { data } = parseUrlParams(req.url)
       try {
         data = JSON.parse(data)
@@ -74,8 +72,6 @@ async function connectKubeSail() {
         res.end()
         return
       }
-
-      console.log({ data })
 
       if (!data || !data.clusterAddress || !data.token || !data.namespace || !data.username) {
         res.write('Kube config is missing data')
@@ -122,9 +118,8 @@ async function connectKubeSail() {
         process.exit(0)
       })
     })
-    .listen(port, res => {
-      console.log('listening', res)
-      opn(`${KUBESAIL_WWW_HOST}/register?listenPort=${port}`)
+    .listen(port, () => {
+      opn(`${KUBESAIL_WWW_HOST}/register?listenPort=${port}`).then(cp => console.log({ cp }))
     })
 }
 connectKubeSail()
