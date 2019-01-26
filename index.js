@@ -9,7 +9,7 @@ const opn = require('opn')
 const getPort = require('get-port')
 
 const ERR_ARROWS = `${ansiStyles.red.open}>>${ansiStyles.red.close}`
-const KUBESAIL_WWW_HOST = 'https://localhost:3000'
+const KUBESAIL_WWW_HOST = 'https://kubesail.com'
 const KUBE_CONFIG_PATH = path.join(homedir, '.kube', 'config')
 
 function fatal(message /*: string */) {
@@ -178,9 +178,9 @@ async function getKubesailConfig() {
         res.end()
 
         process.stderr.write(
-          `  Added Kubesail config to ${ansiStyles.green.open}${
-            ansiStyles.bold.open
-          }${KUBE_CONFIG_PATH}\n${ansiStyles.bold.close}${ansiStyles.green.close}`
+          `  Added Kubesail config to ${ansiStyles.gray.open}${KUBE_CONFIG_PATH}\n${
+            ansiStyles.gray.close
+          }`
         )
         resolve(context.name)
         server.close(() => {
