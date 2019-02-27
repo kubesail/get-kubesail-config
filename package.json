@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "bin": {
-    "get-kubesail-config": "./index.js"
+    "get-kubesail-config": "index.js"
   },
   "dependencies": {
     "ansi-styles": "^3.2.1",

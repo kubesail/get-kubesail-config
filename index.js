@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const path = require('path')
 const homedir = require('os').homedir()
 const fs = require('fs')
