@@ -11,7 +11,7 @@ Can be run standalone or within another package. Currently used by [deploy-to-ku
 
 ### Running
 
-Just run `npx get-kubesail-config`
+Just run `npx get-kubesail-config`. You can then manage your deployments and other resoureces using kubectl.
 
 ### About
 
