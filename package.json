@@ -3,6 +3,9 @@
   "version": "0.0.3",
   "main": "index.js",
   "license": "MIT",
+  "bin": {
+    "get-kubesail-config": "index.js"
+  },
   "dependencies": {
     "ansi-styles": "^3.2.1",
     "get-port": "^4.1.0",
