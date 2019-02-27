@@ -1,10 +1,10 @@
 {
   "name": "get-kubesail-config",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "index.js",
   "license": "MIT",
   "bin": {
-    "get-kubesail-config": "node index.js"
+    "get-kubesail-config": "./index.js"
   },
   "dependencies": {
     "ansi-styles": "^3.2.1",
