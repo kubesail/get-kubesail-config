@@ -81,6 +81,14 @@ if (fs.existsSync(KUBE_CONFIG_PATH)) {
   }
 }
 
+if (!fs.existsSync(path.join(homedir, '.kube'))) {
+  try {
+    fs.mkdirSync(path.join(homedir, '.kube'))
+  } catch (err) {
+    fatal('Error creating a .kube folder in your home directory. You can try manually creating it.')
+  }
+}
+
 const kubesailContexts = config.contexts
   .map(
     context =>
