@@ -2,7 +2,7 @@
 
 A utility to help register for an account and download a Kubernetes config from [KubeSail.com](https://kubesail.com)
 
-Can be run standalone or within another package. Currently used by [deploy-to-kube](https://github.com/kubesail/deploy-to-kube)
+Can be run standalone or within another package. Currently used by [deploy-node-app](https://github.com/kubesail/deploy-node-app)
 
 ### Prerequisites
 
